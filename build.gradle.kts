@@ -11,6 +11,7 @@ repositories {
 
 dependencies {
     testImplementation(kotlin("test"))
+    implementation("com.google.guava:guava:33.4.8-jre")
 }
 
 tasks.test {
