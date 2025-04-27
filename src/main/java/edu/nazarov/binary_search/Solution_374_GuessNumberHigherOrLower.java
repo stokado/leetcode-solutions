@@ -36,7 +36,7 @@ public class Solution_374_GuessNumberHigherOrLower {
             } else {
                 r = mid - 1;
             }
-        };
+        }
 
         return -1;
     }
