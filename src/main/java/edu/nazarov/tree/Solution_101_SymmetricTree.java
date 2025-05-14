@@ -2,6 +2,9 @@ package edu.nazarov.tree;
 
 import edu.nazarov.util.TreeNode;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class Solution_101_SymmetricTree {
     public boolean isSymmetric(TreeNode root) {
         if (root == null) {
@@ -9,6 +12,35 @@ public class Solution_101_SymmetricTree {
         }
 
         return isSymmetric(root.left, root.right);
+    }
+
+    public boolean isSymmetricIterative(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
+
+        Queue<TreeNode> q = new LinkedList<>();
+
+        q.add(root.left);
+        q.add(root.right);
+        while (!q.isEmpty()) {
+            TreeNode left = q.poll();
+            TreeNode right = q.poll();
+
+            if (left == null && right == null) {
+                continue;
+            }
+
+            if (left == null || right == null || left.val != right.val) {
+                return false;
+            }
+
+            q.add(left.left);
+            q.add(right.right);
+            q.add(left.right);
+            q.add(right.left);
+        }
+        return true;
     }
 
     private boolean isSymmetric(TreeNode node1, TreeNode node2) {
